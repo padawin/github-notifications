@@ -10,10 +10,8 @@ func main() {
 	c := NewGithubClientWithToken(os.Getenv("GITHUB_NOTIFICATIONS_TOKEN"))
 	notifs, err := c.getNotifications(context.Background())
 	if err != nil {
-		fmt.Println(" %{F#FC4D44}☠%{F-} ")
-	} else if len(notifs) == 0 {
-		fmt.Println(" %{F#4E9A06}%{F-} ")
-	} else {
-		fmt.Println(" %{F#FC4D44}%{F-} ")
+		fmt.Print("%{B#FC4D44} ☠ %{B#-}")
+	} else if len(notifs) > 0 {
+		fmt.Printf("%%{B#FC4D44}%%{F#2E3436}  %d %%{F-}%%{B-}", len(notifs))
 	}
 }
